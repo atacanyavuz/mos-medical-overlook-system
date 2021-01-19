@@ -1,0 +1,11 @@
+.AboutLogin table{
+    margin: auto;
+    box-sizing: border-box;
+    border-collapse: collapse;
+}
+
+td { 
+    border: 2px solid black;
+    padding: 3px 25px;
+    font-size: 24px;
+}

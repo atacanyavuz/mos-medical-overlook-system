@@ -1,0 +1,63 @@
+div.AdminForm{
+    height: 750px;
+    background-color: grey;
+
+    margin-top: 50px;
+    margin-left: 10%;
+    margin-right: 10%;
+
+    border-radius: 25px;
+    text-align: center;
+
+}
+body {
+    background-color: rgb(200, 200, 200);
+}
+
+div.AdminForm h1{  
+    padding-top: 30px;
+}
+
+form{
+    margin: 5% 8%;
+    text-align: center;
+}
+input.inputvalue {
+    margin-bottom: 10px;
+    padding: 8px 5px;
+    width: 50%;
+}
+
+input.last {
+    margin-bottom: 15px;
+}
+
+button.buttonreset{
+    width: 25%;
+    color: white;
+    background: rgb(66, 184, 221);
+    border-radius: 4px;
+    border: 0;
+    padding: 15px 0px;
+    font-size: 125%;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+}
+input.buttonsubmit{
+    width: 25%;
+    color: white;
+    background: rgb(66, 184, 221);
+    border-radius: 4px;
+    border: 0;
+    padding: 15px 0px;
+    font-size: 125%;
+    letter-spacing: 1.5px;
+    cursor: pointer;    
+}
+
+button.register-button:hover {
+    background: rgba(66, 184, 221,0.8);
+
+}
+
+
