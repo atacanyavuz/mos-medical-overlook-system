@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block link %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+{% endblock link %}
+
+{% block style %}
+    <style>
+        .navigator{
+            margin: 20px 0px;
+            width: 35%;
+        }
+    </style>
+{% endblock style %}
+
+
+{% block body %}
+    
+    <div class="AboutLogin">
+        
+        {% if session["Login_type"] == "Doctor" %}
+            <br><br><br><br>
+            <a href="/profile"><button class="login-button navigator">Profile</button></a><br>
+            {% if session["is_admin"] %}
+                    <a href="/doctor_operation"><button class="login-button navigator">Doctor Operation</button></a><br>
+            {% else %}
+            {% endif %}
+            {% if session["profession"] == "Family Doctor" %}
+                <a href="/my_patients"><button class="login-button navigator">My Patients</button></a><br>
+                <a href="/patient_operation"><button class="login-button navigator">Patient Operation</button></a><br>
+            {% else %}
+            {% endif %}
+            <a href="/find_patient"><button class="login-button navigator">Find Patient</button></a><br>
+        {% elif session["Login_type"] == "Patient" %}
+            <br><br><br><br>
+            <a href="/profile"><button class="login-button navigator">Profile</button></a><br>
+            <a href="/my_prescription"><button class="login-button navigator">My Prescription</button></a><br>
+            <a href="/my_comments"><button class="login-button navigator">My Comments</button></a><br>
+            <a href="/my_doctor"><button class="login-button navigator">My Doctor</button></a><br>
+            
+        {% else %}
+
+            <h1>MOS: Medical Overlook System</h1><br><br><br>
+           <a href="/login"><button class="login-button">Login</button></a>
+        {% endif %}
+
+    </div>
+
+
+{% endblock body %}

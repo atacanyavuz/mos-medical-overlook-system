@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block link %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/add_admin.css') }}">
+{% endblock link %}
+
+{% block style %}
+    <style>
+        .textinput {
+            float: center;
+            width: 50%;
+            min-height: 75px;
+            outline: none;
+            resize: none;
+            border: 1px solid grey;
+        }
+    </style>
+{% endblock style %}
+
+{% block body %}
+    
+    <div class="AdminForm">
+        <h1>Create a new Prescription</h1><br>
+        <h2>Doctor Name: {{doctor_name}} {{doctor_surname}}</h2><br>
+        <h2>Patient Name: {{patient_name}}</h2><br>
+        <h2>Drug Name: {{drug_name}}</h2><br>
+
+        <form action="/create_new_prescription" method="post" name="form" >
+            <textarea class="textinput" name="details" cols="60" rows="20"></textarea><br><br>
+            <input class = "buttonsubmit" type="submit" value="Submit" />
+        </form>
+    </div>
+
+{% endblock body %}

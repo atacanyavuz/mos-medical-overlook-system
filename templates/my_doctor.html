@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block link %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/add_admin.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">  
+{% endblock link %}
+
+{% block style %}
+    <style>
+        table{
+            margin: auto;
+            box-sizing: border-box;
+            border-collapse: collapse;
+        }
+        td { 
+            border: 2px solid black;
+            padding: 3px 5px;
+            font-size: 24px;
+            
+        }
+    </style>
+{% endblock style %}
+
+{% block body %}
+    
+    <div class="AdminForm">
+        <br><br>
+        <h1 style="font-size:36px;">My Doctor</h1><br><br>
+        <table style="width:80%">
+            <tr>
+                <td>Name Surname: </td>
+                <td>{{doctor_name}} {{doctor_surname}}</td>
+            </tr>
+            <tr>
+                <td>Age: </td>
+                <td>{{age}}</td>
+            </tr>
+            <tr>
+                <td>E-mail: </td>
+                <td>{{e_mail}}</td>
+            </tr>
+            <tr>
+                <td>Phone Number: </td>
+                <td>{{phone_num}}</td>
+            </tr>
+            <tr>
+                <td>Profession: </td>
+                <td>{{profession}}</td>
+            </tr>
+            <tr>
+                <td>Hospital: </td>
+                <td>{{hospital}}</td>
+            </tr>
+        </table> 
+    </div>
+{% endblock body %}

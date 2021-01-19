@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+
+{% block link %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/add_admin.css') }}">
+
+    <script type="text/javascript">
+        function validateForm() {
+            var name=document.forms['form']['name'].value;
+            var surname =document.forms['form']['surname'].value;
+            var password =document.forms['form']['password'].value;
+            var age =document.forms['form']['age'].value;
+            var email =document.forms['form']['email'].value;
+            var phone_num =document.forms['form']['phone_num'].value;
+            var profession =document.forms['form']['profession'].value;
+            var hospital =document.forms['form']['hospital'].value;
+
+            if (name==null ||name=="")
+            {
+                alert("Name must be filled out");
+                return false;
+            }
+
+            if (surname==null || surname=="")
+            {
+                alert("Surname must be filled out");
+                return false;
+            }
+            if(password.length<6){  
+                alert("Password must be at least 6 characters long.");  
+                return false;  
+            }  
+            if (isNaN(age)){  
+                alert("Please enter an appropriate age.");  
+                return false;  
+            }
+
+            var atposition=email.indexOf("@");  
+            var dotposition=email.lastIndexOf(".");  
+            if (atposition<1 || dotposition<atposition+2 || dotposition+2>=email.length){  
+                alert("Please enter a valid e-mail address");  
+                return false;  
+            }  
+
+            if (isNaN(phone_num)){  
+                alert("Please enter a appropriate phone number.");  
+                return false;  
+            }
+        } 
+    </script>
+
+{% endblock link %}
+
+
+{% block body %}
+    
+    <div class="AdminForm">
+        <h1>Update Doctor</h1>
+        
+        <form action="/update_doctor" method="post" name="form" onsubmit="return validateForm()" >
+            <label for="name">Name: </label><br>
+            <input class = "inputvalue" type="text" id="name" name="name" placeholder="Name" value="{{name}}" required/><br>
+            <label for="surname">Surname: </label><br>
+            <input class = "inputvalue" type="text" id="surname" name="surname" placeholder="Surname" value="{{surname}}" required /><br>
+            <label for="password">Password: </label><br>
+            <input class = "inputvalue" type="password" id="password" name="password" placeholder="Password" required /> <br>    
+            <label for="age">Age: </label><br>
+            <input class = "inputvalue" type="text" id="age" name="age" placeholder="Age" value="{{age}}" required /><br>
+            <label for="email">E-Mail: </label><br>
+            <input class = "inputvalue" type="text" id="email" name="email" placeholder="E-Mail" value="{{email}}" required /><br>
+            <label for="phone_num">Phone Number: </label><br>
+            <input class = "inputvalue" type="text" id="phone_num" name="phone_num" placeholder="Phone Number" value="{{phone_num}}" required /><br>
+            <label for="profession">Profession: </label><br>
+            <input class = "inputvalue" type="text" id="profession" name="profession" placeholder="Profession" value="{{profession}}" required /><br>
+            <label for="hospital">Hospital: </label><br>
+            <input class = "inputvalue last" type="text" id="hospital" name="hospital" placeholder="Hospital" value="{{hospital}}" required /><br>
+
+            <button class = "buttonreset" type="reset">Reset</button>
+            <input class = "buttonsubmit" type="submit" value="Submit" />
+        </form>
+
+        
+    
+
+    </div>
+
+
+{% endblock body %}
+

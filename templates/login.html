@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block link %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+{% endblock link %}
+
+
+{% block body %}
+    <div class="Login">
+        <h1>MOS: Medical Overlook System</h1>
+        <form action="/login" method="post" name="form" >
+
+            <label for="email">E-Mail: </label><br>
+            <input class = "inputvalue" type="text" id="email" name="email" placeholder="E-Mail" required /><br>
+
+            <label for="password">Password: </label><br>
+            <input class = "inputvalue" type="password" id="password" name="password" placeholder="Password" required /> <br>   <br> 
+
+            <input type="radio" id="patient" name="logtype" value="patient" checked>
+            <label class="radiobutton" for="patient">Patient</label>
+            <input type="radio" id="doctor" name="logtype" value="doctor">
+            <label class="radiobutton" for="doctor">Doctor</label><br><br>
+
+            <input class = "buttonsubmit last" type="submit" value="Submit" />
+        
+        </form>  
+    </div>
+
+{% endblock body %}

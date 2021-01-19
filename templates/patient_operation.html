@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block link %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/add_admin.css') }}">
+
+{% endblock link %}
+
+{% block style %}
+    <style>
+        .operation{
+        width: 30%;
+        color: white;
+        background: rgb(66, 184, 221);
+        border-radius: 4px;
+        border: 0;
+        padding: 15px 0px;
+        margin:20px;
+        font-size: 125%;
+        letter-spacing: 1.5px;
+        cursor: pointer;    
+    }
+    </style>
+{% endblock style %}
+
+{% block body %}
+    
+    <div class="AdminForm">
+        <h1>Patient Operation</h1>
+        <a href="/add_patient"><button class = "operation">Add a new patient</button></a><br>
+        <a href="/search_patient_update"><button class = "operation">Update a patient</button></a><br>
+        <a href="/search_patient_delete"><button class = "operation">Delete a patient</button></a><br>
+
+    </div>
+
+
+{% endblock body %}
+

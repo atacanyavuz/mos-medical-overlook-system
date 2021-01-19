@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block link %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/add_admin.css') }}">
+{% endblock link %}
+
+{% block style %}
+    <style>
+        button.buttonreset{
+            width: 40%;
+            margin: 5px;
+        }
+    </style>
+{% endblock style %}
+
+{% block body %}
+    
+    <div class="AboutLogin">
+        <br><br>
+        <h1 style="font-size:36px;">Past Prescription</h1><br>
+        <h2>Patient Name: {{patient_name}}</h2><br><br>
+        
+        <table class="table table-hover">
+            <thead>
+            <tr>  
+                <th>Doctor</th>  
+                <th>Drug Name</th> 
+                <th>Date</th>
+                <th>Is Virtual</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% set count = list_length %}
+
+            {% for n in range(count) %}
+                
+                {% set item_1 = doctors[n-1] %}
+                {% set item_2 = drug_names[n-1] %}
+                {% set item_3 = prescription[n-1] %}
+                {% set item_4 = is_virtual[n-1] %}
+                <tr>
+                    <td>{{item_1}}</td>
+                    <td>{{item_2}}</td>
+                    <td>{{item_3.date}}</td> 
+                    <td>{{item_4}} </td>         
+                </tr>
+            {% endfor %}      
+            </tbody>
+        </table>  
+        <br>
+        <a href="/found_patient"><button class = "buttonreset">Return Profile</button></a><br>
+    </div>
+
+{% endblock body %}

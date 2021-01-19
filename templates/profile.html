@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+
+{% block link %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">
+{% endblock link %}
+
+
+{% block body %}
+    
+    <div class="AboutLogin">
+        <br><br>
+        {% if  session["Login_type"] == "Doctor" %}
+            <h1 style="font-size:36px;">Doctor Profile</h1>
+        {% elif session["Login_type"] == "Patient" %}
+            <h1 style="font-size:36px;">Patient Profile</h1>
+        {% endif %}
+        <br>
+
+        <table style="width:80%">
+
+        {% if session["Login_type"] == "Doctor"  %}
+            
+            <tr>
+                <td>Name Surname: </td>
+                <td>{{doctor_name}} {{doctor_surname}}</td>
+            </tr>
+            <tr>
+                <td>Age: </td>
+                <td>{{age}}</td>
+            </tr>
+            <tr>
+                <td>E-mail: </td>
+                <td>{{email}}</td>
+            </tr>
+            <tr>
+                <td>Phone Number: </td>
+                <td>{{phone_num}}</td>
+            </tr>
+            <tr>
+                <td>Profession: </td>
+                <td>{{profession}}</td>
+            </tr>
+            <tr>
+                <td>Hospital: </td>
+                <td>{{hospital}}</td>
+            </tr>
+        {% elif session["Login_type"] == "Patient" %}
+            <tr>
+                <td>Name Surname: </td>
+                <td>{{patient_name}} {{patient_surname}}</td>
+            </tr>
+            <tr>
+                <td>Age: </td>
+                <td>{{age}}</td>
+            </tr>
+            <tr>
+                <td>E-mail: </td>
+                <td>{{email}}</td>
+            </tr>
+            <tr>
+                <td>Phone Number: </td>
+                <td>{{phone_num}}</td>
+            </tr>
+            <tr>
+                <td>Last Checkup Date: </td>
+                <td>{{last_checkup_date}}</td>
+            </tr>
+            <tr>
+                <td>Family Doctor: </td>
+                <td>{{family_doctor}}</td>
+            </tr>
+            <tr>
+                <td>Address: </td>
+                <td>{{address}}</td>
+            </tr>
+        {% endif %}
+        </table> 
+
+    </div>
+
+
+{% endblock body %}

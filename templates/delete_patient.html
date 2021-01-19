@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block link %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/add_admin.css') }}">
+
+{% endblock link %}
+
+
+{% block body %}
+    
+    <div class="AdminForm">
+        <h1>Delete Patient</h1>
+        
+        <form action="/delete_patient" method="post" name="form" >
+
+            <input type="radio" id="no" name="confirm" value="NO" checked>
+            <label class="radiobutton" for="no">NO</label>
+            <input type="radio" id="yes" name="confirm" value="YES">
+            <label class="radiobutton" for="yes">YES</label><br><br>
+
+            <input class = "buttonsubmit" type="submit" value="Submit" />
+        </form>
+
+        
+    
+    </div>
+
+
+{% endblock body %}
+
+

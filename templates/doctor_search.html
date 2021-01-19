@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+
+{% block link %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/add_admin.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">  
+{% endblock link %}
+
+{% block style %}
+    <style>
+        table{
+            margin: auto;
+            box-sizing: border-box;
+            border-collapse: collapse;
+        }
+        td { 
+            border: 2px solid black;
+            padding: 3px 5px;
+            font-size: 24px;
+            
+        }
+    </style>
+{% endblock style %}
+
+{% block body %}
+    
+    <div class="AdminForm">
+        <h1>Find Doctor</h1>
+        <form action="/doctor_search" method="post" name="form" >
+            <label for="email">E-Mail: </label><br>
+            <input class = "inputvalue" type="text" id="email" name="email" placeholder="E-Mail" required /><br>
+            <button class = "buttonreset" type="reset">Reset</button>
+            <input class = "buttonsubmit" type="submit" value="Submit" />
+        </form>
+
+    {% if doctor %}
+        <table style="width:80%">
+            <tr>
+                <td>Name Surname: </td>
+                <td>{{doctor.doctor_name}} {{doctor.doctor_surname}}</td>
+            </tr>
+            <tr>
+                <td>Age: </td>
+                <td>{{doctor.age}}</td>
+            </tr>
+            <tr>
+                <td>E-mail: </td>
+                <td>{{doctor.e_mail}}</td>
+            </tr>
+            <tr>
+                <td>Phone Number: </td>
+                <td>{{doctor.phone_num}}</td>
+            </tr>
+            <tr>
+                <td>Profession: </td>
+                <td>{{doctor.profession}}</td>
+            </tr>
+            <tr>
+                <td>Hospital: </td>
+                <td>{{doctor.hospital}}</td>
+            </tr>
+        </table> 
+
+    {% else %}
+    {% endif %}
+
+    </div>
+
+
+{% endblock body %}

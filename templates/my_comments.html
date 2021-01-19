@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block link %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/add_admin.css') }}">
+{% endblock link %}
+
+{% block style %}
+    <style>
+    table{
+        margin: auto;
+        box-sizing: border-box;
+        border-collapse: collapse;
+    }
+    td { 
+        border: 2px solid black;
+        padding: 5px 50px;
+        font-size: 24px;
+    }
+    </style>
+{% endblock style %}
+    
+{% block body %}
+    <div class="AdminForm">
+        <h1>My Comments</h1>
+
+        {% if comments %}
+            <table class="">
+                <thead>
+                    <tr>
+                        <th>Doctor Name</th>
+                        <th>Date</th>
+                        <th>Star</th>
+                        <th>Comment</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+            {% set count = list_length %}
+
+            {% for n in range(count) %}
+                    {% set item_1 = doctors[n-1] %}
+                    {% set item_2 = comments[n-1] %}
+
+                    <tr>
+                        <td>{{item_1}}</td>
+                        <td>{{item_2.date}}</td>
+                        <td>{{item_2.stars}}</td>
+                        <td>{{item_2.comment}}</td>
+                        <td><a href="/comment_change/{{item_2.report_id}}"><button>Update</button></a></td>
+                    </tr>
+            {% endfor %}
+                </tbody>
+            </table> 
+        {% else %}
+        {% endif %}
+
+    </div>
+    
+
+
+{% endblock body %}

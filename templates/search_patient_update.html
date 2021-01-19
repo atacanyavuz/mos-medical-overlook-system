@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block link %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/add_admin.css') }}">
+{% endblock link %}
+
+
+
+{% block body %}
+    
+    <div class="AdminForm">
+        <h1>Update Patient</h1>
+        
+        <form action="/search_patient_update" method="post" name="form" >
+            <label for="email">E-Mail: </label><br>
+            <input class = "inputvalue" type="text" id="email" name="email" placeholder="E-Mail" required /><br>
+            <button class = "buttonreset" type="reset">Reset</button>
+            <input class = "buttonsubmit" type="submit" value="Submit" />
+        </form>
+    </div>
+
+
+{% endblock body %}

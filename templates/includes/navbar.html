@@ -1,0 +1,83 @@
+<nav class="navbar">
+  <span class="navbar-toggle" id="js-navbar-toggle">
+      <i class="fas fa-bars"></i>
+  </span>
+  <a href="/" class="logo">MOS</a>
+  <ul class="main-nav" id="js-menu">
+    
+      {% if session["logged_in"] %}
+        <li>
+          <a href="/profile" class="nav-links">Profile</a>
+        </li>
+      {% if session["Login_type"] == "Doctor" %}
+        {% if session["is_admin"] %}
+          <li>
+            <a href="/doctor_operation" class="nav-links">Doctor Operation</a>
+          </li>
+        {% else %}
+        {% endif %}
+        {% if session["profession"] == "Family Doctor" %}
+          <li>
+            <a href="/my_patients" class="nav-links">My Patients</a>
+          </li>        
+          <li>
+            <a href="/patient_operation" class="nav-links">Patient Operation</a>
+          </li>
+        {% else %}
+        {% endif %}
+
+        <li>
+          <a href="/find_patient" class="nav-links">Find Patient</a>
+        </li>
+      {% elif session["Login_type"] == "Patient" %}
+        <li>
+          <a href="/my_prescription" class="nav-links">My Prescription</a>
+        </li>
+        <li>
+          <a href="/my_comments" class="nav-links">My Comments</a>
+        </li>
+        <li>
+          <a href="/my_doctor" class="nav-links">My Doctor</a>
+        </li>
+      {% else %}
+
+      {% endif %}
+    {% else %}
+
+    {% endif %}
+    <li>
+      <a href="/doctor_search" class="nav-links">Doctor Search</a>
+    </li>
+
+    {% if session["logged_in"] %}
+      <li>
+        <a href="/logout" class="nav-links">Logout</a>
+      </li>
+    {% else %}
+      <li>
+        <a href="/login" class="nav-links">Login</a>
+      </li>
+    {% endif %}
+
+
+
+
+
+
+
+  </ul>
+</nav>
+
+
+
+
+
+
+<script>
+  let mainNav = document.getElementById('js-menu');
+  let navBarToggle = document.getElementById('js-navbar-toggle');
+
+  navBarToggle.addEventListener('click', function () {
+      mainNav.classList.toggle('active');
+  });
+</script>

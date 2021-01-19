@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block link %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/add_admin.css') }}">
+{% endblock link%}
+
+{% block style %}
+    <style>
+        .textinput {
+            float: center;
+            width: 50%;
+            min-height: 75px;
+            outline: none;
+            resize: none;
+            border: 1px solid grey;
+        }
+    </style>
+{% endblock style %}
+    
+{% block body %}
+    
+    <div class="AdminForm">
+        <h1>Add new report type:</h1>
+        
+        <form action="/new_report_type" method="post" name="form" >
+            <label for="name">Report Type: </label><br>
+            <input class = "inputvalue" type="text" id="name" name="name" placeholder="Name" required/><br>
+            <label for="details">Details: </label><br>
+            <textarea class="textinput" name="details" cols="60" rows="20"></textarea><br><br>
+        
+            <button class = "buttonreset" type="reset">Reset</button>
+            <input class = "buttonsubmit" type="submit" value="Submit" />
+        </form>
+    </div>
+
+{% endblock body %}

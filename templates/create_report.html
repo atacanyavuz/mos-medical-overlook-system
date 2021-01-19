@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block link %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/add_admin.css') }}">
+{% endblock link %}
+
+{% block style %}
+    <style>
+    table{
+        margin: auto;
+        box-sizing: border-box;
+        border-collapse: collapse;
+    }
+    td { 
+        border: 2px solid black;
+        padding: 5px 50px;
+        font-size: 24px;
+    }
+    </style>
+{% endblock style %}
+    
+{% block body %}
+    <div class="AdminForm">
+        <h1>Report Type</h1>
+        <form action="/create_report" method="post" name="form" >
+            <label for="type">Report Type: </label><br>
+            <input class = "inputvalue" type="text" id="type" name="type" placeholder="Report Type" /><br>
+
+            
+            <a href="/new_report_type"><input style="text-align: center;" class = "buttonsubmit" name="add_new" value="New Report Type" ></a>
+            <input class = "buttonsubmit" type="submit" value="Submit" />
+        </form><br><br>
+
+        {% if types %}
+            <table class="">
+                <thead>
+                    <tr>
+                        <th>Report Type</th>
+                        <th>Details</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+            {% for type in types %}
+                    <tr>
+                        <td>{{type.diseases_name}}</td>
+                        <td>{{type.details}}</td>
+                        <td><a href="/report_create/{{type.diseases_id}}"><button>Create</button></a></td>
+                    </tr>
+            {% endfor %}
+                </tbody>
+            </table> 
+        {% else %}
+        {% endif %}
+
+    </div>
+    
+
+
+{% endblock body %}

@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block link %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">
+{% endblock link %}
+
+{% block style %}
+    <style>
+        td { 
+            border: 2px solid black;
+            padding: 3px 45px;
+            font-size: 24px;
+        }
+    </style>
+{% endblock style %}
+
+{% block body %}
+    
+    <div class="AboutLogin">
+        <h1>My Patients</h1><br>
+        {% if my_patients %}
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Name Surname</th>
+                    <th>Age</th>
+                    <th>E-Mail</th>
+                    <th>Last Checkup Date</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for patient in my_patients %}
+                <tr>
+                    <td>{{patient.patient_name}} {{patient.patient_surname}}</td>
+                    <td>{{patient.age}}</td>
+                    <td>{{patient.e_mail}}</td>
+                    <td>{{patient.last_checkup_date}}</td>
+                </tr>
+                {% endfor %}      
+                </tbody>
+            </table>  
+        {% else %}    
+        {% endif %}
+    </div>
+
+{% endblock body %}

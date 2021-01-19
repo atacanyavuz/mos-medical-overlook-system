@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block link %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/add_admin.css') }}">
+{% endblock link %}
+
+{% block style %}
+    <style>
+    table{
+        margin: auto;
+        box-sizing: border-box;
+        border-collapse: collapse;
+    }
+    td { 
+        border: 2px solid black;
+        padding: 5px 50px;
+        font-size: 24px;
+    }
+    </style>
+{% endblock style %}
+
+
+
+{% block body %}
+    <div class="AdminForm">
+        <h1>Create Prescription</h1>
+        <form action="/create_prescription" method="post" name="form" >
+            <label for="drug_name">Drug Name: </label><br>
+            <input class = "inputvalue" type="text" id="drug_name" name="drug_name" placeholder="Drug Name" /><br>
+
+            
+            <a href="/new_drug"><input style="text-align: center;" class = "buttonsubmit" name="add_new_drug" value="New Drug" ></a>
+            <input class = "buttonsubmit" type="submit" value="Submit" />
+        </form><br><br>
+
+        {% if drugs %}
+            <table class="">
+                <thead>
+                    <tr>
+                        <th>Drug Name</th>
+                        <th>Details</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+            {% for drug in drugs %}
+                    <tr>
+                        <td>{{drug.drug_name}}</td>
+                        <td>{{drug.details}}</td>
+                        <td><a href="/drug_create/{{drug.drug_id}}"><button>Create</button></a></td>
+                    </tr>
+            {% endfor %}
+                </tbody>
+            </table> 
+        {% else %}
+        {% endif %}
+
+    </div>
+    
+
+
+{% endblock body %}
